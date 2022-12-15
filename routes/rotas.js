@@ -10,6 +10,7 @@ router.use(express.json());
 router.get('/pessoas', pessoaController.getAll);
 router.get('/pessoas/:CPF', pessoaController.getPessoaByCPF);
 router.post('/pessoas', pessoaController.pessoaCreate);
+router.put('/pessoas/:id', pessoaController.pessoaUpdate);
 
 
 //ROTAS DE DESPESAS

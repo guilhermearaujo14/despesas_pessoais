@@ -16,8 +16,16 @@ const pessoaCreate = async (req, res) =>{
     return res.status(201).json({message: 'Pessoa criada com sucesso!'})
 }
 
+const pessoaUpdate = async (req, res) =>{
+    const { id } = req.params;
+    const pessoa = await PessoaModel.pessoaUpdate(id, req.body)
+    return res.status(201).json({message: 'Pessoa alterada com sucesso!'})
+}
+
+
 module.exports = {
     getAll,
     getPessoaByCPF,
-    pessoaCreate
+    pessoaCreate,
+    pessoaUpdate
 }

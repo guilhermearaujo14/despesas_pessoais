@@ -22,6 +22,13 @@ const pessoaCreate = async (pessoa)=>{
 }
 
 
+const pessoaUpdate = async (id, pessoa) =>{
+    const { nome, CPF, email, Senha, DataNascimento } = pessoa;
+    const DataAlteracao = getDataHora();
+    const [sql] = await connection.execute('UPDATE pessoas SET nome = ?, CPF = ?, email = ?, Senha = ?, DataNascimento = ?, DataAlteracao = ? WHERE ID = ?', [nome, CPF, email,Senha, DataNascimento, DataAlteracao, id ]);
+    return sql;
+}
+
 const  getDataHora = ()=>{
     const data = new Date();
     const dia = data.getDate();
@@ -40,4 +47,5 @@ module.exports = {
     getAll,
     getPessoaByCPF,
     pessoaCreate,
+    pessoaUpdate,
 }
